@@ -1,0 +1,153 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "countries": "Countries",
+    "visas": "Visas",
+    "education": "Study Abroad",
+    "work": "Work Abroad",
+    "blog": "Blog",
+    "contact": "Contact",
+    "application": "Apply Now",
+    "faq": "FAQ"
+  },
+  "home": {
+    "hero": {
+      "title": "Your Trusted Partner in Visa Consultancy",
+      "subtitle": "We are here to help you reach your dream country with visa, education and work consultancy services.",
+      "cta": "Apply Now",
+      "learnMore": "Learn More"
+    },
+    "services": {
+      "title": "Our Services",
+      "visa": {
+        "title": "Visa Consultancy",
+        "description": "Professional support in visa application processes for all countries"
+      },
+      "education": {
+        "title": "Education Consultancy",
+        "description": "Guidance in overseas education and school applications"
+      },
+      "work": {
+        "title": "Work Consultancy",
+        "description": "Help with work permits and job finding processes abroad"
+      }
+    },
+    "featured": {
+      "title": "Featured Programs",
+      "viewAll": "View All"
+    },
+    "whyUs": {
+      "title": "Why Choose Us?",
+      "experience": {
+        "title": "Experienced Team",
+        "description": "Years of experience and expertise"
+      },
+      "success": {
+        "title": "High Success Rate",
+        "description": "Thousands of successful visa applications"
+      },
+      "support": {
+        "title": "24/7 Support",
+        "description": "We are always here for you"
+      }
+    }
+  },
+  "footer": {
+    "description": "Your trusted solution partner in visa consultancy",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Get in touch with us",
+    "form": {
+      "name": "Full Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Your Message",
+      "submit": "Send",
+      "sending": "Sending...",
+      "success": "Your message has been sent successfully!",
+      "error": "An error occurred. Please try again."
+    },
+    "info": {
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address"
+    }
+  },
+  "application": {
+    "title": "Apply Now",
+    "subtitle": "Fill out the application form and we'll get in touch with you",
+    "form": {
+      "name": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "country": "Target Country",
+      "countryPlaceholder": "Select a country",
+      "visaType": "Visa Type",
+      "visaTypePlaceholder": "Select visa type",
+      "message": "Your Message (Optional)",
+      "submit": "Submit Application",
+      "submitting": "Submitting...",
+      "success": "Your application has been received! We will contact you soon.",
+      "error": "An error occurred. Please try again."
+    }
+  },
+  "countries": {
+    "title": "Countries",
+    "subtitle": "Countries we provide visa consultancy for",
+    "viewDetails": "View Details",
+    "programs": "Programs",
+    "apply": "Apply"
+  },
+  "visas": {
+    "title": "Visa Programs",
+    "subtitle": "Visa solutions for different needs",
+    "types": {
+      "tourist": "Tourist Visa",
+      "work": "Work Visa",
+      "student": "Student Visa",
+      "business": "Business Visa",
+      "startup": "Startup Visa",
+      "residence": "Residence Permit"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Latest content about visas and living abroad",
+    "readMore": "Read More",
+    "recent": "Recent Posts",
+    "category": "Category"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Learn who we are as Elma Visa Consultancy"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answers to your questions"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "notFound": "Page not found",
+    "backToHome": "Back to Home",
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "search": "Search...",
+    "filter": "Filter",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit"
+  }
+}
+
+
+

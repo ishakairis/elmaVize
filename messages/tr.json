@@ -1,0 +1,153 @@
+{
+  "nav": {
+    "home": "Anasayfa",
+    "about": "Hakkımızda",
+    "countries": "Ülkeler",
+    "visas": "Vizeler",
+    "education": "Yurtdışı Eğitim",
+    "work": "Yurtdışı Çalışma",
+    "blog": "Blog",
+    "contact": "İletişim",
+    "application": "Başvuru Yap",
+    "faq": "S.S.S"
+  },
+  "home": {
+    "hero": {
+      "title": "Vize Danışmanlığında Güvenilir Partneriniz",
+      "subtitle": "Yurtdışı vize, eğitim ve iş danışmanlığı hizmetleriyle hayalinizdeki ülkeye ulaşmanızda yanınızdayız.",
+      "cta": "Başvuru Yap",
+      "learnMore": "Daha Fazla Bilgi"
+    },
+    "services": {
+      "title": "Hizmetlerimiz",
+      "visa": {
+        "title": "Vize Danışmanlığı",
+        "description": "Tüm ülkeler için vize başvuru süreçlerinde profesyonel destek"
+      },
+      "education": {
+        "title": "Eğitim Danışmanlığı",
+        "description": "Yurtdışı eğitim ve okul başvurularında rehberlik"
+      },
+      "work": {
+        "title": "İş Danışmanlığı",
+        "description": "Yurtdışında çalışma izni ve iş bulma süreçlerinde yardım"
+      }
+    },
+    "featured": {
+      "title": "Öne Çıkan Programlar",
+      "viewAll": "Tümünü Gör"
+    },
+    "whyUs": {
+      "title": "Neden Bizi Seçmelisiniz?",
+      "experience": {
+        "title": "Deneyimli Kadro",
+        "description": "Yılların getirdiği deneyim ve uzmanlık"
+      },
+      "success": {
+        "title": "Yüksek Başarı Oranı",
+        "description": "Binlerce başarılı vize başvurusu"
+      },
+      "support": {
+        "title": "7/24 Destek",
+        "description": "Her zaman yanınızdayız"
+      }
+    }
+  },
+  "footer": {
+    "description": "Vize danışmanlığında güvenilir çözüm ortağınız",
+    "quickLinks": "Hızlı Bağlantılar",
+    "contact": "İletişim",
+    "followUs": "Bizi Takip Edin",
+    "rights": "Tüm hakları saklıdır."
+  },
+  "contact": {
+    "title": "İletişim",
+    "subtitle": "Bizimle iletişime geçin",
+    "form": {
+      "name": "Ad Soyad",
+      "email": "E-posta",
+      "subject": "Konu",
+      "message": "Mesajınız",
+      "submit": "Gönder",
+      "sending": "Gönderiliyor...",
+      "success": "Mesajınız başarıyla gönderildi!",
+      "error": "Bir hata oluştu. Lütfen tekrar deneyin."
+    },
+    "info": {
+      "phone": "Telefon",
+      "email": "E-posta",
+      "address": "Adres"
+    }
+  },
+  "application": {
+    "title": "Başvuru Yap",
+    "subtitle": "Başvuru formunu doldurun, sizinle iletişime geçelim",
+    "form": {
+      "name": "Ad Soyad",
+      "email": "E-posta",
+      "phone": "Telefon",
+      "country": "Hedef Ülke",
+      "countryPlaceholder": "Ülke seçiniz",
+      "visaType": "Vize Tipi",
+      "visaTypePlaceholder": "Vize tipi seçiniz",
+      "message": "Mesajınız (Opsiyonel)",
+      "submit": "Başvuru Yap",
+      "submitting": "Gönderiliyor...",
+      "success": "Başvurunuz alındı! En kısa sürede sizinle iletişime geçeceğiz.",
+      "error": "Bir hata oluştu. Lütfen tekrar deneyin."
+    }
+  },
+  "countries": {
+    "title": "Ülkeler",
+    "subtitle": "Vize danışmanlığı verdiğimiz ülkeler",
+    "viewDetails": "Detayları Görüntüle",
+    "programs": "Programlar",
+    "apply": "Başvur"
+  },
+  "visas": {
+    "title": "Vize Programları",
+    "subtitle": "Farklı ihtiyaçlar için vize çözümleri",
+    "types": {
+      "tourist": "Turistik Vize",
+      "work": "Çalışma Vizesi",
+      "student": "Öğrenci Vizesi",
+      "business": "İş Vizesi",
+      "startup": "Startup Vizesi",
+      "residence": "Oturma İzni"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Vize ve yurtdışı yaşam hakkında güncel içerikler",
+    "readMore": "Devamını Oku",
+    "recent": "Son Yazılar",
+    "category": "Kategori"
+  },
+  "about": {
+    "title": "Hakkımızda",
+    "subtitle": "Elma Vize Danışmanlık olarak kim olduğumuzu öğrenin"
+  },
+  "faq": {
+    "title": "Sık Sorulan Sorular",
+    "subtitle": "Merak ettiğiniz soruların cevapları"
+  },
+  "common": {
+    "loading": "Yükleniyor...",
+    "error": "Bir hata oluştu",
+    "notFound": "Sayfa bulunamadı",
+    "backToHome": "Ana Sayfaya Dön",
+    "readMore": "Devamını Oku",
+    "learnMore": "Daha Fazla",
+    "viewAll": "Tümünü Gör",
+    "search": "Ara...",
+    "filter": "Filtrele",
+    "close": "Kapat",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "edit": "Düzenle"
+  }
+}
+
+
+
