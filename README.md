@@ -266,7 +266,7 @@ For questions or issues, please contact:
 
 ## License
 
-Copyright © 2024 Elma Vize Danışmanlık. All rights reserved.
+Copyright © 2025 Elma Vize Danışmanlık. All rights reserved.
 
 
 
