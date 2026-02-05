@@ -1,9 +1,33 @@
 import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
 async function main() {
   console.log('🌱 Starting database seeding...');
+
+  // Create Admin User (if not exists)
+  const existingAdmin = await prisma.user.findUnique({
+    where: { email: 'admin@elmavize.com' },
+  });
+
+  if (!existingAdmin) {
+    const hashedPassword = await bcrypt.hash('admin123', 10);
+    await prisma.user.create({
+      data: {
+        email: 'admin@elmavize.com',
+        password: hashedPassword,
+        name: 'Admin',
+        role: 'admin',
+      },
+    });
+    console.log('✅ Created admin user');
+    console.log('   Email: admin@elmavize.com');
+    console.log('   Password: admin123');
+    console.log('   ⚠️  IMPORTANT: Change this password after first login!');
+  } else {
+    console.log('ℹ️  Admin user already exists (skipping)');
+  }
 
   // Seed Countries
   const countries = await Promise.all([
@@ -230,6 +254,10 @@ main()
   .finally(async () => {
     await prisma.$disconnect();
   });
+
+
+
+
 
 
 
