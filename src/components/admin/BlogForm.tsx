@@ -6,11 +6,15 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
 import { slugify } from '@/lib/utils';
 import { BlogPost } from '@prisma/client';
 import { useAdminLocale } from '@/contexts/AdminLocaleContext';
+import { Upload, Link as LinkIcon } from 'lucide-react';
+import ImageUpload from './ImageUpload';
+import RichTextEditor from './RichTextEditor';
 
 interface BlogFormProps {
   post?: BlogPost;
@@ -32,6 +36,7 @@ export default function BlogForm({ post }: BlogFormProps) {
     contentEn: post?.contentEn || '',
     author: post?.author || 'Elma Vize',
     category: post?.category || 'Genel',
+    featuredImage: post?.featuredImage || '',
     published: post?.published || false,
   });
 
@@ -210,39 +215,68 @@ export default function BlogForm({ post }: BlogFormProps) {
 
       <Card>
         <CardHeader>
-          <CardTitle>{t.forms.fullContent}</CardTitle>
+          <CardTitle>{t.forms.featuredImage || 'Featured Image'}</CardTitle>
+          <CardDescription>Blog post thumbnail (shown in blog list)</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="contentEn">Content (English) *</Label>
-            <Textarea
-              id="contentEn"
-              name="contentEn"
-              value={formData.contentEn}
-              onChange={handleChange}
-              rows={15}
-              required
-              placeholder="Enter full blog post content in English..."
-            />
-            <p className="text-sm text-gray-500">
-              {t.forms.htmlTags}
-            </p>
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="contentTr">{t.forms.contentTr} *</Label>
-            <Textarea
-              id="contentTr"
-              name="contentTr"
-              value={formData.contentTr}
-              onChange={handleChange}
-              rows={15}
-              required
-              placeholder="Türkçe blog yazısı içeriğini girin..."
-            />
-            <p className="text-sm text-gray-500">
-              {t.forms.htmlTags}
-            </p>
-          </div>
+          <Tabs defaultValue="url" className="w-full">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="url">
+                <LinkIcon className="h-4 w-4 mr-2" />
+                URL
+              </TabsTrigger>
+              <TabsTrigger value="upload">
+                <Upload className="h-4 w-4 mr-2" />
+                Upload
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="url" className="space-y-2">
+              <Label htmlFor="featuredImage">Image URL (optional)</Label>
+              <Input
+                id="featuredImage"
+                name="featuredImage"
+                value={formData.featuredImage}
+                onChange={handleChange}
+                placeholder="https://images.unsplash.com/photo-..."
+              />
+              <p className="text-sm text-gray-500">
+                Recommended size: 1200x630px (good for social media sharing too)
+              </p>
+            </TabsContent>
+
+            <TabsContent value="upload">
+              <ImageUpload
+                value={formData.featuredImage}
+                onChange={(url) => setFormData({ ...formData, featuredImage: url })}
+                onRemove={() => setFormData({ ...formData, featuredImage: '' })}
+                folder="elma-vize/blog"
+                label=""
+                helpText="Blog post thumbnail (1200x630px recommended)"
+              />
+            </TabsContent>
+          </Tabs>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>{t.forms.fullContent}</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <RichTextEditor
+            content={formData.contentEn}
+            onChange={(html) => setFormData({ ...formData, contentEn: html })}
+            placeholder="Enter full blog post content in English..."
+            label="Content (English) *"
+          />
+
+          <RichTextEditor
+            content={formData.contentTr}
+            onChange={(html) => setFormData({ ...formData, contentTr: html })}
+            placeholder="Türkçe blog yazısı içeriğini girin..."
+            label={`${t.forms.contentTr} *`}
+          />
         </CardContent>
       </Card>
 

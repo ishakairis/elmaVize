@@ -7,7 +7,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -21,6 +21,8 @@ model Country {
   contentTr     String        @default("")
   contentEn     String        @default("")
   flagImage     String?
+  iso2Code      String?       // Two-letter ISO country code (US, DE, CA, TR, etc.) for flag icons
+  featuredImage String?       // Optional featured image URL (landmark/landscape photo)
   featured      Boolean       @default(false)
   order         Int           @default(0)
   createdAt     DateTime      @default(now())
@@ -49,20 +51,21 @@ model VisaProgram {
 }
 
 model BlogPost {
-  id          String   @id @default(cuid())
-  slug        String   @unique
-  titleTr     String
-  titleEn     String
-  contentTr   String
-  contentEn   String
-  excerptTr   String   @default("")
-  excerptEn   String   @default("")
-  author      String   @default("Elma Vize")
-  category    String   @default("Genel")
-  published   Boolean  @default(false)
-  publishedAt DateTime @default(now())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  titleTr       String
+  titleEn       String
+  contentTr     String
+  contentEn     String
+  excerptTr     String   @default("")
+  excerptEn     String   @default("")
+  author        String   @default("Elma Vize")
+  category      String   @default("Genel")
+  featuredImage String?  // Optional blog post thumbnail/featured image URL
+  published     Boolean  @default(false)
+  publishedAt   DateTime @default(now())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
 
 model Page {
@@ -126,4 +129,15 @@ model User {
   updatedAt DateTime @updatedAt
 }
 
+model SiteSettings {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  value       String   // Image URL or setting value
+  label       String   // User-friendly label for admin panel
+  description String?  // Help text for admin
+  category    String   // Group settings: "branding", "hero", "about", etc.
+  imageType   String?  // "logo", "hero", "banner", "photo"
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
 

@@ -15,7 +15,8 @@ import {
   Menu,
   X,
   Languages,
-  User
+  User,
+  Settings
 } from 'lucide-react';
 import { useState } from 'react';
 import { useAdminLocale } from '@/contexts/AdminLocaleContext';
@@ -41,6 +42,7 @@ export default function AdminNav({ user }: AdminNavProps) {
     { href: '/admin/pages', label: t.nav.pages, icon: FileText },
     { href: '/admin/applications', label: t.nav.applications, icon: ClipboardList },
     { href: '/admin/messages', label: t.nav.messages, icon: MessageSquare },
+    { href: '/admin/settings', label: t.nav.settings, icon: Settings },
     { href: '/admin/profile', label: t.nav.profile, icon: User },
   ];
 

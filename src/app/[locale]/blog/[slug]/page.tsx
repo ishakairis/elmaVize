@@ -57,7 +57,7 @@ export default async function BlogPostPage({
         <Card>
           <CardContent className="p-8">
             <div
-              className="prose max-w-none"
+              className="prose prose-lg max-w-none prose-headings:font-bold prose-a:text-blue-600 prose-img:rounded-lg"
               dangerouslySetInnerHTML={{
                 __html: locale === 'tr' ? post.contentTr : post.contentEn,
               }}

@@ -7,8 +7,13 @@ import { useParams, usePathname as useNextPathname } from 'next/navigation';
 import { company } from '@/config/company';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Globe } from 'lucide-react';
+import Image from 'next/image';
 
-export function Header() {
+interface HeaderProps {
+  logoUrl?: string | null;
+}
+
+export function Header({ logoUrl }: HeaderProps) {
   const t = useTranslations();
   const params = useParams();
   const locale = (params?.locale as string) || 'tr';
@@ -53,10 +58,21 @@ export function Header() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8">
         {/* Logo */}
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
-            <span className="text-xl font-bold text-primary">
-              {company.name[locale as 'tr' | 'en']}
-            </span>
+          <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
+            {logoUrl ? (
+              <Image
+                src={logoUrl}
+                alt={company.name[locale as 'tr' | 'en']}
+                width={120}
+                height={40}
+                className="h-10 w-auto"
+                unoptimized
+              />
+            ) : (
+              <span className="text-xl font-bold text-primary">
+                {company.name[locale as 'tr' | 'en']}
+              </span>
+            )}
           </Link>
         </div>
 

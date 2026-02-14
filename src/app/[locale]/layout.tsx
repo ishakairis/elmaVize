@@ -6,6 +6,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Toaster } from '@/components/ui/toaster';
 import { Inter } from 'next/font/google';
+import { getSiteImage } from '@/lib/site-images';
 import '../globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -31,13 +32,16 @@ export default async function LocaleLayout({
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages({ locale });
+  
+  // Fetch site logo for header
+  const logoUrl = await getSiteImage('site_logo');
 
   return (
     <html lang={locale}>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
           <div className="flex min-h-screen flex-col">
-            <Header />
+            <Header logoUrl={logoUrl} />
             <main className="flex-1">{children}</main>
             <Footer />
           </div>

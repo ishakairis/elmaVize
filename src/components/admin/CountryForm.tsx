@@ -1,16 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { slugify } from '@/lib/utils';
 import { Country } from '@prisma/client';
 import { useAdminLocale } from '@/contexts/AdminLocaleContext';
+import * as Flags from 'country-flag-icons/react/3x2';
+import { Upload, Link as LinkIcon } from 'lucide-react';
+import ImageUpload from './ImageUpload';
 
 interface CountryFormProps {
   country?: Country;
@@ -31,6 +36,8 @@ export default function CountryForm({ country }: CountryFormProps) {
     contentTr: country?.contentTr || '',
     contentEn: country?.contentEn || '',
     flagImage: country?.flagImage || '',
+    iso2Code: country?.iso2Code || '',
+    featuredImage: country?.featuredImage || '',
     featured: country?.featured || false,
     order: country?.order || 0,
   });
@@ -52,6 +59,13 @@ export default function CountryForm({ country }: CountryFormProps) {
         slug: slugify(value),
       }));
     }
+  };
+
+  const handleSelectChange = (name: string, value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -142,6 +156,62 @@ export default function CountryForm({ country }: CountryFormProps) {
           </div>
 
           <div className="space-y-2">
+            <Label htmlFor="iso2Code">{t.forms.isoCode || 'ISO Country Code'}</Label>
+            <div className="flex items-center gap-4">
+              {formData.iso2Code && (
+                <div className="w-20 h-15 border rounded flex items-center justify-center bg-gray-50">
+                  {React.createElement((Flags as any)[formData.iso2Code], { 
+                    className: "w-full h-full object-contain" 
+                  })}
+                </div>
+              )}
+              <Select 
+                value={formData.iso2Code} 
+                onValueChange={(value) => handleSelectChange('iso2Code', value)}
+              >
+                <SelectTrigger className="flex-1">
+                  <SelectValue placeholder={t.forms.selectIsoCode || 'Select ISO code'} />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="US">🇺🇸 United States (US)</SelectItem>
+                  <SelectItem value="DE">🇩🇪 Germany (DE)</SelectItem>
+                  <SelectItem value="CA">🇨🇦 Canada (CA)</SelectItem>
+                  <SelectItem value="GB">🇬🇧 United Kingdom (GB)</SelectItem>
+                  <SelectItem value="TR">🇹🇷 Turkey (TR)</SelectItem>
+                  <SelectItem value="FR">🇫🇷 France (FR)</SelectItem>
+                  <SelectItem value="ES">🇪🇸 Spain (ES)</SelectItem>
+                  <SelectItem value="IT">🇮🇹 Italy (IT)</SelectItem>
+                  <SelectItem value="NL">🇳🇱 Netherlands (NL)</SelectItem>
+                  <SelectItem value="AU">🇦🇺 Australia (AU)</SelectItem>
+                  <SelectItem value="NZ">🇳🇿 New Zealand (NZ)</SelectItem>
+                  <SelectItem value="JP">🇯🇵 Japan (JP)</SelectItem>
+                  <SelectItem value="KR">🇰🇷 South Korea (KR)</SelectItem>
+                  <SelectItem value="CN">🇨🇳 China (CN)</SelectItem>
+                  <SelectItem value="IE">🇮🇪 Ireland (IE)</SelectItem>
+                  <SelectItem value="AT">🇦🇹 Austria (AT)</SelectItem>
+                  <SelectItem value="CH">🇨🇭 Switzerland (CH)</SelectItem>
+                  <SelectItem value="BE">🇧🇪 Belgium (BE)</SelectItem>
+                  <SelectItem value="SE">🇸🇪 Sweden (SE)</SelectItem>
+                  <SelectItem value="NO">🇳🇴 Norway (NO)</SelectItem>
+                  <SelectItem value="DK">🇩🇰 Denmark (DK)</SelectItem>
+                  <SelectItem value="FI">🇫🇮 Finland (FI)</SelectItem>
+                  <SelectItem value="PL">🇵🇱 Poland (PL)</SelectItem>
+                  <SelectItem value="PT">🇵🇹 Portugal (PT)</SelectItem>
+                  <SelectItem value="GR">🇬🇷 Greece (GR)</SelectItem>
+                  <SelectItem value="CZ">🇨🇿 Czech Republic (CZ)</SelectItem>
+                  <SelectItem value="HU">🇭🇺 Hungary (HU)</SelectItem>
+                  <SelectItem value="RO">🇷🇴 Romania (RO)</SelectItem>
+                  <SelectItem value="BG">🇧🇬 Bulgaria (BG)</SelectItem>
+                  <SelectItem value="HR">🇭🇷 Croatia (HR)</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <p className="text-sm text-gray-500">
+              {t.forms.isoCodeHelp || 'Select the 2-letter ISO country code for automatic flag display'}
+            </p>
+          </div>
+
+          <div className="space-y-2">
             <Label htmlFor="flagImage">Flag Image URL (optional)</Label>
             <Input
               id="flagImage"
@@ -150,6 +220,49 @@ export default function CountryForm({ country }: CountryFormProps) {
               onChange={handleChange}
               placeholder="https://example.com/flag.png"
             />
+            <p className="text-sm text-gray-500">
+              Not needed if ISO code is selected above
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <Label>{t.forms.featuredImage || 'Featured Image'} (optional)</Label>
+            <Tabs defaultValue="url" className="w-full">
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="url">
+                  <LinkIcon className="h-4 w-4 mr-2" />
+                  URL
+                </TabsTrigger>
+                <TabsTrigger value="upload">
+                  <Upload className="h-4 w-4 mr-2" />
+                  Upload
+                </TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="url" className="space-y-2">
+                <Input
+                  id="featuredImage"
+                  name="featuredImage"
+                  value={formData.featuredImage}
+                  onChange={handleChange}
+                  placeholder="https://images.unsplash.com/photo-..."
+                />
+                <p className="text-sm text-gray-500">
+                  Landmark or landscape photo of the country (1200x800px recommended)
+                </p>
+              </TabsContent>
+
+              <TabsContent value="upload">
+                <ImageUpload
+                  value={formData.featuredImage}
+                  onChange={(url) => setFormData({ ...formData, featuredImage: url })}
+                  onRemove={() => setFormData({ ...formData, featuredImage: '' })}
+                  folder="elma-vize/countries"
+                  label=""
+                  helpText="Landmark or landscape photo of the country (1200x800px recommended)"
+                />
+              </TabsContent>
+            </Tabs>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

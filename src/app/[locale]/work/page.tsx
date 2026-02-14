@@ -47,7 +47,7 @@ export default async function WorkPage({
             <CardContent className="p-8">
               {pageContent ? (
                 <div
-                  className="prose max-w-none"
+                  className="prose prose-lg max-w-none prose-headings:font-bold prose-a:text-blue-600 prose-img:rounded-lg"
                   dangerouslySetInnerHTML={{
                     __html:
                       locale === 'tr'
